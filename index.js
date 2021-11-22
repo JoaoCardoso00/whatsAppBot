@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import twilio from "twilio";
+import cors from 'cors';
 
 dotenv.config();
 
@@ -22,7 +23,7 @@ app.get('/', async (req, res) => {
     }).done();
     return res.send({ message: 'Send' });
   } catch (e) {
-    return res.send({ Error: e });
+    return res.status(400).send({ Error: e });
   }
 });
 
