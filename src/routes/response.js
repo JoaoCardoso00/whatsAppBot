@@ -11,15 +11,17 @@ router.post('/', async (req, res) => {
     const { SID, AUTH_TOKEN } = process.env;
     const client = twilio(SID, AUTH_TOKEN);
 
+    const { MESSAGE } = req;
+
     await client.messages.create({ 
-      body: `teste ${JSON.stringify(req)}`, 
+      body: `teste ${MESSAGE}`, 
       from: `whatsapp:+${process.env.PHONE_BOT}`,
       to: `whatsapp:+${process.env.PHONE_USER}` 
     }).done();
 
-    return res.send({ message: `Send ${JSON.stringify(req)}` });
+    return res.send({ message: `Send ${MESSAGE}` });
   } catch (e) {
-    return res.status(400).send({ Error: [e, JSON.stringify(req)] });
+    return res.status(400).send({ Error: [e, MESSAGE] });
   }
 });
 
