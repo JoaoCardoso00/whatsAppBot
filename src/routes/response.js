@@ -3,7 +3,7 @@ import { Router } from 'express';
 const router = Router();
 
 router.post('/', async (req, res) => {
-  const data = req;
+  const data = req.sid;
   
   try {
     await client.messages.create({ 
