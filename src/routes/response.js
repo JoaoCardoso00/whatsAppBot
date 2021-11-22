@@ -7,10 +7,11 @@ router.post('/', async (req, res) => {
   
   try {
     await client.messages.create({ 
-      body: `${data}`, 
+      body: `teste`, 
       from: `whatsapp:+${process.env.PHONE_BOT}`,
       to: `whatsapp:+${process.env.PHONE_USER}` 
     }).done();
+    
     return res.send({ message: `Send ${data}` });
   } catch (e) {
     return res.status(400).send({ Error: [e, data] });
