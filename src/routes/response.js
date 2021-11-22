@@ -7,14 +7,12 @@ dotenv.config();
 const router = Router();
 
 router.post('/', async (req, res) => {
-  const data = req.TwilioResponse;
-  
   try {
     const { SID, AUTH_TOKEN } = process.env;
     const client = twilio(SID, AUTH_TOKEN);
-    
+
     await client.messages.create({ 
-      body: `teste`, 
+      body: `teste ${req}`, 
       from: `whatsapp:+${process.env.PHONE_BOT}`,
       to: `whatsapp:+${process.env.PHONE_USER}` 
     }).done();
