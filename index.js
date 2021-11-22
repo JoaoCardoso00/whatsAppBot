@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get('/', async (req, res) => {
   try {
-    client.messages.create({ 
+    await client.messages.create({ 
       body: 'Your Yummy Cupcakes Company order of 1 dozen frosted cupcakes has shipped and should be delivered on July 10, 2019. Details: http://www.yummycupcakes.com/', 
       from: `whatsapp:+${process.env.PHONE_BOT}`,
       to: `whatsapp:+${process.env.PHONE_USER}` 
