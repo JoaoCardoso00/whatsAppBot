@@ -3,7 +3,7 @@ import { Router } from 'express';
 const router = Router();
 
 router.post('/', async (req, res) => {
-  const data = req.sid;
+  const data = req.TwilioResponse;
   
   try {
     await client.messages.create({ 
