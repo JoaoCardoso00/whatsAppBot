@@ -17,9 +17,9 @@ router.post('/', async (req, res) => {
       to: `whatsapp:+${process.env.PHONE_USER}` 
     }).done();
 
-    return res.send({ message: `Send ${data}` });
+    return res.send({ message: `Send ${req}` });
   } catch (e) {
-    return res.status(400).send({ Error: [e, data] });
+    return res.status(400).send({ Error: [e, req] });
   }
 });
 
